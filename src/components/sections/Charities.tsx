@@ -11,7 +11,7 @@ export default function Charities() {
     {
       name: "The Animal Project",
       description: "An organization dedicated to protecting and supporting animals.",
-      link: "#"
+      link: "https://animalprojectnyc.squarespace.com/"
     },
     {
       name: "ASPCA",
