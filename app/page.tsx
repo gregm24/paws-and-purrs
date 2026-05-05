@@ -4,6 +4,7 @@ import About from "./components/About";
 import Services from "./components/Services";
 import Booking from "./components/Booking";
 import Reviews from "./components/Reviews";
+import Gallery from "./components/Gallery";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <Services />
         <Booking />
         <Reviews />
+        <Gallery />
       </main>
     </>
   );

@@ -1,0 +1,57 @@
+import GalleryCard from "./GalleryCard";
+
+const PETS = [
+  {
+    name: "Pookah",
+    breed: "Cat",
+    description:
+      "A fluffy tabby with an enormous personality. Pookah is very clear about when it's feeding time and will absolutely let you know.",
+    color: "#F5E8D0",
+  },
+  {
+    name: "Bobo",
+    breed: "Dog",
+    description:
+      "A golden mix who lives for Riverside Park. Bobo has never met a stranger and makes every walk feel like an adventure.",
+    color: "#FDE8D8",
+  },
+  {
+    name: "Oliver",
+    breed: "Cat",
+    description:
+      "Shy at first, but once Oliver decides you're okay, you've made a friend for life. He's got a purr loud enough to hear from the hallway.",
+    color: "#E8EFF8",
+  },
+];
+
+export default function Gallery() {
+  return (
+    <section id="gallery" className="bg-cream py-20 lg:py-28">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
+            <span>📷</span>
+            <span>The Regulars</span>
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-bold text-navy mb-4">
+            Friends I&apos;ve Cared For
+          </h2>
+          <p className="text-muted max-w-xl mx-auto">
+            Every animal I work with becomes a real connection — not just a
+            job. Here are a few of the regulars.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+          {PETS.map((pet) => (
+            <GalleryCard key={pet.name} {...pet} />
+          ))}
+        </div>
+
+        <p className="text-center text-sm text-muted mt-10">
+          Photos coming soon — real ones, not stock.
+        </p>
+      </div>
+    </section>
+  );
+}
