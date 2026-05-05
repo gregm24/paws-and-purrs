@@ -7,6 +7,7 @@ import Reviews from "./components/Reviews";
 import Gallery from "./components/Gallery";
 import Charities from "./components/Charities";
 import FutureGoal from "./components/FutureGoal";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Charities />
         <FutureGoal />
       </main>
+      <Footer />
     </>
   );
 }
