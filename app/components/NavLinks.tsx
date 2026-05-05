@@ -23,7 +23,7 @@ export default function NavLinks({
   const baseClass =
     "text-sm font-medium transition-colors duration-150 hover:text-orange-light";
   const activeClass = "text-orange border-b-2 border-orange";
-  const inactiveClass = "text-navy-text opacity-80 hover:opacity-100";
+  const inactiveClass = "text-cream/75 hover:text-cream";
 
   return (
     <ul
