@@ -6,25 +6,25 @@ export default function Hero() {
       id="home"
       className="min-h-screen bg-cream paw-bg flex items-center"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
           {/* Text */}
-          <FadeIn direction="left" className="flex flex-col gap-6">
-            <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full w-fit">
+          <FadeIn direction="left" className="flex flex-col gap-8">
+            <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-4 py-2 rounded-full w-fit">
               <span>🐾</span>
               <span>Upper West Side, NYC</span>
             </div>
 
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-navy leading-tight tracking-tight">
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-navy leading-tight tracking-tight">
               Paws &amp; Purrs
             </h1>
 
-            <p className="text-xl sm:text-2xl text-charcoal font-medium leading-snug max-w-md">
+            <p className="text-2xl sm:text-3xl text-charcoal font-medium leading-snug max-w-md">
               Pet care and a helping hand,{" "}
               <span className="text-orange">right in your neighborhood.</span>
             </p>
 
-            <p className="text-base text-muted leading-relaxed max-w-md">
+            <p className="text-lg text-muted leading-relaxed max-w-md">
               What started as a flyer slid under apartment doors at Lincoln
               Towers is now your go-to for dog walking, cat feeding, pet
               sitting — and so much more. Errands, tutoring, computer help,
@@ -34,19 +34,19 @@ export default function Hero() {
             <div className="flex flex-wrap gap-4 pt-2">
               <a
                 href="#booking"
-                className="inline-flex items-center justify-center px-7 py-3.5 bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition-colors duration-150 shadow-sm"
+                className="inline-flex items-center justify-center px-8 py-4 bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition-colors duration-150 shadow-sm text-lg"
               >
                 Book a Service
               </a>
               <a
                 href="#services"
-                className="inline-flex items-center justify-center px-7 py-3.5 border-2 border-navy text-navy font-semibold rounded-full hover:bg-navy hover:text-cream transition-colors duration-150"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-navy text-navy font-semibold rounded-full hover:bg-navy hover:text-cream transition-colors duration-150 text-lg"
               >
                 View Services
               </a>
             </div>
 
-            <p className="text-xs text-muted italic">
+            <p className="text-sm text-muted italic">
               Available summers, winter break, and spring break — home from
               University of Florida.
             </p>
@@ -56,7 +56,7 @@ export default function Hero() {
           <FadeIn
             direction="right"
             delay={150}
-            className="relative h-80 sm:h-96 lg:h-[520px] rounded-3xl overflow-hidden bg-cream-dark flex items-center justify-center"
+            className="relative h-96 sm:h-[480px] lg:h-[600px] rounded-3xl overflow-hidden bg-cream-dark flex items-center justify-center"
           >
             <div
               className="absolute inset-0 opacity-20"
@@ -66,8 +66,8 @@ export default function Hero() {
               }}
             />
             <div className="relative text-center px-8">
-              <div className="text-7xl mb-4">🐾</div>
-              <p className="text-navy font-medium text-lg opacity-60">
+              <div className="text-8xl mb-6">🐾</div>
+              <p className="text-navy font-medium text-xl opacity-60">
                 Photo coming soon
               </p>
             </div>

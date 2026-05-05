@@ -27,23 +27,23 @@ const CHARITIES = [
 
 export default function Charities() {
   return (
-    <section id="charities" className="bg-cream-dark paw-bg py-20 lg:py-28">
+    <section id="charities" className="bg-cream-dark paw-bg py-28 lg:py-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
+        <FadeIn className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-4 py-2 rounded-full mb-5">
             <span>❤️</span>
             <span>Give Back</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-navy mb-4">
+          <h2 className="text-5xl sm:text-6xl font-bold text-navy mb-5">
             Causes Worth Supporting
           </h2>
-          <p className="text-muted max-w-xl mx-auto">
+          <p className="text-lg text-muted max-w-xl mx-auto">
             If you care about animals as much as I do, these organizations are
             doing incredible work. Every dollar helps.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {CHARITIES.map((c, i) => (
             <FadeIn key={c.name} delay={i * 120}>
               <CharityCard {...c} />

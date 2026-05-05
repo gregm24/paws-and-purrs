@@ -61,7 +61,7 @@ export default function BookingForm() {
   };
 
   const inputClass =
-    "w-full rounded-xl px-4 py-3 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-orange focus:bg-white/15 transition text-sm";
+    "w-full rounded-xl px-5 py-4 bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-orange focus:bg-white/15 transition text-base";
 
   if (status === "success") {
     return (
@@ -82,10 +82,10 @@ export default function BookingForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs text-white/60 mb-1.5 font-medium">
+          <label className="block text-sm text-white/60 mb-2 font-medium">
             Name <span className="text-orange">*</span>
           </label>
           <input
@@ -98,7 +98,7 @@ export default function BookingForm() {
           />
         </div>
         <div>
-          <label className="block text-xs text-white/60 mb-1.5 font-medium">
+          <label className="block text-sm text-white/60 mb-2 font-medium">
             Email <span className="text-orange">*</span>
           </label>
           <input
@@ -112,9 +112,9 @@ export default function BookingForm() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className="block text-xs text-white/60 mb-1.5 font-medium">
+          <label className="block text-sm text-white/60 mb-2 font-medium">
             Service <span className="text-orange">*</span>
           </label>
           <select
@@ -134,7 +134,7 @@ export default function BookingForm() {
           </select>
         </div>
         <div>
-          <label className="block text-xs text-white/60 mb-1.5 font-medium">
+          <label className="block text-sm text-white/60 mb-2 font-medium">
             Date <span className="text-orange">*</span>
           </label>
           <input
@@ -148,11 +148,11 @@ export default function BookingForm() {
       </div>
 
       <div>
-        <label className="block text-xs text-white/60 mb-1.5 font-medium">
+        <label className="block text-sm text-white/60 mb-2 font-medium">
           Notes
         </label>
         <textarea
-          rows={3}
+          rows={4}
           value={form.notes}
           onChange={set("notes")}
           placeholder="Pet names, address, anything helpful..."
@@ -167,7 +167,7 @@ export default function BookingForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="flex items-center justify-center gap-2 w-full sm:w-auto sm:self-start px-8 py-3.5 bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+        className="flex items-center justify-center gap-2 w-full sm:w-auto sm:self-start px-10 py-4 text-lg bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {status === "loading" ? (
           <>

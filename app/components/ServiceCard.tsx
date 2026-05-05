@@ -12,15 +12,15 @@ export default function ServiceCard({
   price,
 }: ServiceCardProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm border border-cream-dark flex flex-col gap-3 hover:shadow-md transition-shadow duration-150">
-      <div className="text-3xl">{icon}</div>
+    <div className="bg-white rounded-2xl p-8 shadow-sm border border-cream-dark flex flex-col gap-4 hover:shadow-md transition-shadow duration-150">
+      <div className="text-4xl">{icon}</div>
       <div className="flex items-start justify-between gap-2">
-        <h3 className="text-base font-semibold text-navy">{title}</h3>
-        <span className="shrink-0 text-xs font-bold text-white bg-orange px-2.5 py-1 rounded-full">
+        <h3 className="text-lg font-semibold text-navy">{title}</h3>
+        <span className="shrink-0 text-sm font-bold text-white bg-orange px-3 py-1.5 rounded-full">
           {price}
         </span>
       </div>
-      <p className="text-sm text-muted leading-relaxed">{description}</p>
+      <p className="text-base text-muted leading-relaxed">{description}</p>
     </div>
   );
 }

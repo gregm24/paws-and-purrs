@@ -12,16 +12,16 @@ export default function ReviewCard({
   stars,
 }: ReviewCardProps) {
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm flex flex-col gap-4">
-      <div className="text-orange text-lg tracking-widest">
+    <div className="bg-white rounded-2xl p-8 shadow-sm flex flex-col gap-5">
+      <div className="text-orange text-xl tracking-widest">
         {"★".repeat(stars)}
       </div>
-      <p className="text-charcoal leading-relaxed text-sm italic">
+      <p className="text-charcoal leading-relaxed text-base italic">
         &ldquo;{quote}&rdquo;
       </p>
       <div>
-        <p className="text-navy font-semibold text-sm">{name}</p>
-        <p className="text-muted text-xs">{location}</p>
+        <p className="text-navy font-semibold text-base">{name}</p>
+        <p className="text-muted text-sm">{location}</p>
       </div>
     </div>
   );

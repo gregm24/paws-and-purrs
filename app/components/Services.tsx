@@ -72,27 +72,27 @@ const NEIGHBORHOOD_SERVICES = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-cream paw-bg py-20 lg:py-28">
+    <section id="services" className="bg-cream paw-bg py-28 lg:py-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
+        <FadeIn className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-4 py-2 rounded-full mb-5">
             <span>✨</span>
             <span>What I Do</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-navy mb-4">
+          <h2 className="text-5xl sm:text-6xl font-bold text-navy mb-5">
             Services
           </h2>
-          <p className="text-muted max-w-xl mx-auto">
+          <p className="text-lg text-muted max-w-xl mx-auto">
             From pets to people — I help with whatever life throws at you.
           </p>
         </FadeIn>
 
         {/* Pet Services */}
-        <div className="mb-12">
-          <h3 className="text-xl font-bold text-navy mb-6 flex items-center gap-2">
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold text-navy mb-8 flex items-center gap-2">
             <span>🐾</span> Pet Services
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {PET_SERVICES.map((s, i) => (
               <FadeIn key={s.title} delay={i * 100}>
                 <ServiceCard {...s} />
@@ -103,18 +103,18 @@ export default function Services() {
 
         {/* Neighborhood Help */}
         <div>
-          <div className="flex items-start gap-4 mb-6">
+          <div className="flex items-start gap-4 mb-8">
             <div>
-              <h3 className="text-xl font-bold text-navy flex items-center gap-2">
+              <h3 className="text-2xl font-bold text-navy flex items-center gap-2">
                 <span>🏙️</span> Neighborhood Help
               </h3>
-              <p className="text-sm text-muted mt-1">
+              <p className="text-base text-muted mt-2">
                 This is what sets Paws &amp; Purrs apart — I&apos;m not just a
                 pet sitter.
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {NEIGHBORHOOD_SERVICES.map((s, i) => (
               <FadeIn key={s.title} delay={i * 80}>
                 <ServiceCard {...s} />
@@ -123,7 +123,7 @@ export default function Services() {
           </div>
         </div>
 
-        <p className="text-center text-sm text-muted mt-10">
+        <p className="text-center text-base text-muted mt-14">
           Not sure if what you need is on the list?{" "}
           <a href="#booking" className="text-orange underline underline-offset-2">
             Just ask.

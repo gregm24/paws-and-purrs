@@ -27,23 +27,23 @@ const PETS = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="bg-cream paw-bg py-20 lg:py-28">
+    <section id="gallery" className="bg-cream paw-bg py-28 lg:py-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <FadeIn className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
+        <FadeIn className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-4 py-2 rounded-full mb-5">
             <span>📷</span>
             <span>The Regulars</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-navy mb-4">
+          <h2 className="text-5xl sm:text-6xl font-bold text-navy mb-5">
             Friends I&apos;ve Cared For
           </h2>
-          <p className="text-muted max-w-xl mx-auto">
+          <p className="text-lg text-muted max-w-xl mx-auto">
             Every animal I work with becomes a real connection — not just a
             job. Here are a few of the regulars.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {PETS.map((pet, i) => (
             <FadeIn key={pet.name} delay={i * 120}>
               <GalleryCard {...pet} />
@@ -51,7 +51,7 @@ export default function Gallery() {
           ))}
         </div>
 
-        <p className="text-center text-sm text-muted mt-10">
+        <p className="text-center text-base text-muted mt-14">
           Photos coming soon — real ones, not stock.
         </p>
       </div>
