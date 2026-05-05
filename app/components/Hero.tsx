@@ -44,7 +44,23 @@ export default function Hero() {
               </a>
             </div>
 
-            <p className="text-sm text-muted italic">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 pt-1">
+              <a
+                href="tel:9179008924"
+                className="flex items-center gap-2 text-sm text-muted hover:text-orange transition-colors duration-150"
+              >
+                <span>📞</span> 917-900-8924
+              </a>
+              <span className="text-muted/30 hidden sm:inline">·</span>
+              <a
+                href="mailto:gregorylomyers@gmail.com"
+                className="flex items-center gap-2 text-sm text-muted hover:text-orange transition-colors duration-150"
+              >
+                <span>✉️</span> gregorylomyers@gmail.com
+              </a>
+            </div>
+
+            <p className="text-sm text-muted italic -mt-4">
               Available summers, winter break, and spring break — home from
               University of Florida.
             </p>
