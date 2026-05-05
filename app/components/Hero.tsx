@@ -1,0 +1,73 @@
+export default function Hero() {
+  return (
+    <section
+      id="home"
+      className="min-h-screen bg-cream flex items-center"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Text */}
+          <div className="flex flex-col gap-6">
+            <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full w-fit">
+              <span>🐾</span>
+              <span>Upper West Side, NYC</span>
+            </div>
+
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-navy leading-tight tracking-tight">
+              Paws &amp; Purrs
+            </h1>
+
+            <p className="text-xl sm:text-2xl text-charcoal font-medium leading-snug max-w-md">
+              Pet care and a helping hand,{" "}
+              <span className="text-orange">right in your neighborhood.</span>
+            </p>
+
+            <p className="text-base text-muted leading-relaxed max-w-md">
+              What started as a flyer slid under apartment doors at Lincoln
+              Towers is now your go-to for dog walking, cat feeding, pet
+              sitting — and so much more. Errands, tutoring, computer help,
+              moving, childcare. Real help, from a real neighbor.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <a
+                href="#booking"
+                className="inline-flex items-center justify-center px-7 py-3.5 bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition-colors duration-150 shadow-sm"
+              >
+                Book a Service
+              </a>
+              <a
+                href="#services"
+                className="inline-flex items-center justify-center px-7 py-3.5 border-2 border-navy text-navy font-semibold rounded-full hover:bg-navy hover:text-cream transition-colors duration-150"
+              >
+                View Services
+              </a>
+            </div>
+
+            <p className="text-xs text-muted italic">
+              Available summers, winter break, and spring break — home from
+              University of Florida.
+            </p>
+          </div>
+
+          {/* Image placeholder */}
+          <div className="relative h-80 sm:h-96 lg:h-[520px] rounded-3xl overflow-hidden bg-cream-dark flex items-center justify-center">
+            <div
+              className="absolute inset-0 opacity-20"
+              style={{
+                backgroundImage:
+                  "radial-gradient(circle at 25% 25%, #E8722A 0%, transparent 50%), radial-gradient(circle at 75% 75%, #1B2A4A 0%, transparent 50%)",
+              }}
+            />
+            <div className="relative text-center px-8">
+              <div className="text-7xl mb-4">🐾</div>
+              <p className="text-navy font-medium text-lg opacity-60">
+                Photo coming soon
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
