@@ -66,7 +66,7 @@ export default function Footer() {
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-sm text-white/30">
-            © {new Date().getFullYear()} Paws &amp; Purrs. All rights reserved.
+            © {new Date().getFullYear()} -Paws &amp; Purrs. All rights reserved.
           </p>
           <p className="text-sm text-white/20">Upper West Side, NYC</p>
         </div>

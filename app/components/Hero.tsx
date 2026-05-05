@@ -1,3 +1,4 @@
+import Image from "next/image";
 import FadeIn from "./FadeIn";
 
 export default function Hero() {
@@ -52,25 +53,19 @@ export default function Hero() {
             </p>
           </FadeIn>
 
-          {/* Image placeholder */}
+          {/* Hero photo */}
           <FadeIn
             direction="right"
             delay={150}
-            className="relative h-96 sm:h-[480px] lg:h-[600px] rounded-3xl overflow-hidden bg-cream-dark flex items-center justify-center"
+            className="relative h-96 sm:h-[480px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
           >
-            <div
-              className="absolute inset-0 opacity-20"
-              style={{
-                backgroundImage:
-                  "radial-gradient(circle at 25% 25%, #E8722A 0%, transparent 50%), radial-gradient(circle at 75% 75%, #1B2A4A 0%, transparent 50%)",
-              }}
+            <Image
+              src="/images/home.jpeg"
+              alt="Paws & Purrs"
+              fill
+              className="object-cover"
+              priority
             />
-            <div className="relative text-center px-8">
-              <div className="text-8xl mb-6">🐾</div>
-              <p className="text-navy font-medium text-xl opacity-60">
-                Photo coming soon
-              </p>
-            </div>
           </FadeIn>
         </div>
       </div>

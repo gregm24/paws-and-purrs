@@ -1,3 +1,4 @@
+import Image from "next/image";
 import FadeIn from "./FadeIn";
 
 export default function About() {
@@ -5,15 +6,18 @@ export default function About() {
     <section id="about" className="bg-cream-dark paw-bg py-28 lg:py-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Photo placeholder */}
+          {/* Photo */}
           <FadeIn
             direction="left"
             className="flex justify-center lg:justify-start order-2 lg:order-1"
           >
-            <div className="w-72 h-72 sm:w-96 sm:h-96 rounded-3xl bg-navy flex items-center justify-center shadow-xl">
-              <span className="text-cream text-6xl font-bold tracking-tight">
-                GM
-              </span>
+            <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-3xl overflow-hidden shadow-xl">
+              <Image
+                src="/images/aboutme.jpeg"
+                alt="Greg Myers"
+                fill
+                className="object-cover"
+              />
             </div>
           </FadeIn>
 
@@ -54,7 +58,7 @@ export default function About() {
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
-              {["Upper West Side", "Lincoln Towers", "Since 2023", "UF CS Student"].map(
+              {["Upper West Side", "Lincoln Towers", "Since 2021", "UF CS Student"].map(
                 (tag) => (
                   <span
                     key={tag}
