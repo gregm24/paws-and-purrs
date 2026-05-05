@@ -1,19 +1,28 @@
+import FadeIn from "./FadeIn";
+
 export default function About() {
   return (
-    <section id="about" className="bg-cream-dark py-20 lg:py-28">
+    <section id="about" className="bg-cream-dark paw-bg py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Photo placeholder */}
-          <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+          <FadeIn
+            direction="left"
+            className="flex justify-center lg:justify-start order-2 lg:order-1"
+          >
             <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-navy flex items-center justify-center shadow-xl">
               <span className="text-cream text-5xl font-bold tracking-tight">
                 GM
               </span>
             </div>
-          </div>
+          </FadeIn>
 
           {/* Text */}
-          <div className="order-1 lg:order-2 flex flex-col gap-6">
+          <FadeIn
+            direction="right"
+            delay={100}
+            className="order-1 lg:order-2 flex flex-col gap-6"
+          >
             <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full w-fit">
               <span>👋</span>
               <span>About Greg</span>
@@ -44,13 +53,6 @@ export default function About() {
               and I genuinely enjoy helping.
             </p>
 
-            <p className="text-base text-charcoal leading-relaxed">
-              Every client I&apos;ve worked with has been a real person from this
-              neighborhood — not a booking app match, not a stranger. I care
-              about the people and animals I work with, and that&apos;s the whole
-              point.
-            </p>
-
             <div className="flex flex-wrap gap-3 pt-2">
               {["Upper West Side", "Lincoln Towers", "Since 2023", "UF CS Student"].map(
                 (tag) => (
@@ -63,7 +65,7 @@ export default function About() {
                 )
               )}
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

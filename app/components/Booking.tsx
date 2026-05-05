@@ -1,12 +1,13 @@
 import BookingForm from "./BookingForm";
+import FadeIn from "./FadeIn";
 
 export default function Booking() {
   return (
-    <section id="booking" className="bg-navy py-20 lg:py-28">
+    <section id="booking" className="bg-navy paw-bg-dark py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           {/* Left: copy */}
-          <div className="flex flex-col gap-6">
+          <FadeIn direction="left" className="flex flex-col gap-6">
             <div className="inline-flex items-center gap-2 bg-white/10 text-orange text-sm font-medium px-3 py-1.5 rounded-full w-fit">
               <span>📅</span>
               <span>Get Started</span>
@@ -34,12 +35,12 @@ export default function Booking() {
                 </div>
               ))}
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right: form */}
-          <div>
+          <FadeIn direction="right" delay={150}>
             <BookingForm />
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

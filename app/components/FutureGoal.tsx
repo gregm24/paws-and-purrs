@@ -1,22 +1,28 @@
+import FadeIn from "./FadeIn";
+
 export default function FutureGoal() {
   return (
-    <section id="future-goal" className="bg-navy py-20 lg:py-28">
+    <section id="future-goal" className="bg-navy paw-bg-dark py-20 lg:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-8">
-          <div className="inline-flex items-center gap-2 bg-white/10 text-orange text-sm font-medium px-3 py-1.5 rounded-full w-fit">
+          <FadeIn className="inline-flex items-center gap-2 bg-white/10 text-orange text-sm font-medium px-3 py-1.5 rounded-full w-fit">
             <span>🌍</span>
             <span>The Vision</span>
-          </div>
+          </FadeIn>
 
-          <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
-            Where This Is Headed
-          </h2>
+          <FadeIn delay={80}>
+            <h2 className="text-4xl sm:text-5xl font-bold text-white leading-tight">
+              Where This Is Headed
+            </h2>
+          </FadeIn>
 
-          <blockquote className="border-l-4 border-orange pl-6 text-2xl sm:text-3xl font-medium text-white/90 leading-snug italic">
-            &ldquo;What if the job and the adventure were the same thing?&rdquo;
-          </blockquote>
+          <FadeIn delay={160}>
+            <blockquote className="border-l-4 border-orange pl-6 text-2xl sm:text-3xl font-medium text-white/90 leading-snug italic">
+              &ldquo;What if the job and the adventure were the same thing?&rdquo;
+            </blockquote>
+          </FadeIn>
 
-          <div className="flex flex-col gap-5 text-white/70 leading-relaxed">
+          <FadeIn delay={240} className="flex flex-col gap-5 text-white/70 leading-relaxed">
             <p>
               Long term, I want to take Paws &amp; Purrs beyond the Upper West
               Side — beyond New York, honestly. The vision is simple: travel
@@ -37,9 +43,9 @@ export default function FutureGoal() {
               every neighbor who calls — that&apos;s the foundation of something
               bigger. I&apos;m in no rush. The journey is the point.
             </p>
-          </div>
+          </FadeIn>
 
-          <div className="flex flex-wrap gap-3 pt-2">
+          <FadeIn delay={320} className="flex flex-wrap gap-3 pt-2">
             {["🗺️ Travel", "🏠 House Sitting", "🐾 Global Pet Care", "💻 Built on CS"].map(
               (tag) => (
                 <span
@@ -50,7 +56,7 @@ export default function FutureGoal() {
                 </span>
               )
             )}
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>

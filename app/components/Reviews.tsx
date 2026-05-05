@@ -1,3 +1,4 @@
+import FadeIn from "./FadeIn";
 import ReviewCard from "./ReviewCard";
 
 const REVIEWS = [
@@ -33,9 +34,9 @@ const REVIEWS = [
 
 export default function Reviews() {
   return (
-    <section id="reviews" className="bg-orange-pale py-20 lg:py-28">
+    <section id="reviews" className="bg-orange-pale paw-bg py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <FadeIn className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-white text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
             <span>⭐</span>
             <span>What Neighbors Say</span>
@@ -47,11 +48,13 @@ export default function Reviews() {
             Real clients from the neighborhood. Every review is from someone
             I&apos;ve worked with personally.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {REVIEWS.map((r) => (
-            <ReviewCard key={r.name} {...r} />
+          {REVIEWS.map((r, i) => (
+            <FadeIn key={r.name} delay={i * 100}>
+              <ReviewCard {...r} />
+            </FadeIn>
           ))}
         </div>
       </div>

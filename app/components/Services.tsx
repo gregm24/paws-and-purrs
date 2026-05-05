@@ -1,3 +1,4 @@
+import FadeIn from "./FadeIn";
 import ServiceCard from "./ServiceCard";
 
 const PET_SERVICES = [
@@ -71,9 +72,9 @@ const NEIGHBORHOOD_SERVICES = [
 
 export default function Services() {
   return (
-    <section id="services" className="bg-cream py-20 lg:py-28">
+    <section id="services" className="bg-cream paw-bg py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <FadeIn className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
             <span>✨</span>
             <span>What I Do</span>
@@ -84,7 +85,7 @@ export default function Services() {
           <p className="text-muted max-w-xl mx-auto">
             From pets to people — I help with whatever life throws at you.
           </p>
-        </div>
+        </FadeIn>
 
         {/* Pet Services */}
         <div className="mb-12">
@@ -92,8 +93,10 @@ export default function Services() {
             <span>🐾</span> Pet Services
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {PET_SERVICES.map((s) => (
-              <ServiceCard key={s.title} {...s} />
+            {PET_SERVICES.map((s, i) => (
+              <FadeIn key={s.title} delay={i * 100}>
+                <ServiceCard {...s} />
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -112,8 +115,10 @@ export default function Services() {
             </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {NEIGHBORHOOD_SERVICES.map((s) => (
-              <ServiceCard key={s.title} {...s} />
+            {NEIGHBORHOOD_SERVICES.map((s, i) => (
+              <FadeIn key={s.title} delay={i * 80}>
+                <ServiceCard {...s} />
+              </FadeIn>
             ))}
           </div>
         </div>

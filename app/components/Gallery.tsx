@@ -1,3 +1,4 @@
+import FadeIn from "./FadeIn";
 import GalleryCard from "./GalleryCard";
 
 const PETS = [
@@ -26,9 +27,9 @@ const PETS = [
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="bg-cream py-20 lg:py-28">
+    <section id="gallery" className="bg-cream paw-bg py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <FadeIn className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
             <span>📷</span>
             <span>The Regulars</span>
@@ -40,11 +41,13 @@ export default function Gallery() {
             Every animal I work with becomes a real connection — not just a
             job. Here are a few of the regulars.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-          {PETS.map((pet) => (
-            <GalleryCard key={pet.name} {...pet} />
+          {PETS.map((pet, i) => (
+            <FadeIn key={pet.name} delay={i * 120}>
+              <GalleryCard {...pet} />
+            </FadeIn>
           ))}
         </div>
 

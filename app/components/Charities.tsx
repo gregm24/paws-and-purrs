@@ -1,3 +1,4 @@
+import FadeIn from "./FadeIn";
 import CharityCard from "./CharityCard";
 
 const CHARITIES = [
@@ -26,9 +27,9 @@ const CHARITIES = [
 
 export default function Charities() {
   return (
-    <section id="charities" className="bg-cream-dark py-20 lg:py-28">
+    <section id="charities" className="bg-cream-dark paw-bg py-20 lg:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <FadeIn className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full mb-4">
             <span>❤️</span>
             <span>Give Back</span>
@@ -40,11 +41,13 @@ export default function Charities() {
             If you care about animals as much as I do, these organizations are
             doing incredible work. Every dollar helps.
           </p>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {CHARITIES.map((c) => (
-            <CharityCard key={c.name} {...c} />
+          {CHARITIES.map((c, i) => (
+            <FadeIn key={c.name} delay={i * 120}>
+              <CharityCard {...c} />
+            </FadeIn>
           ))}
         </div>
       </div>

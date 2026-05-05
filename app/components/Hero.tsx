@@ -1,13 +1,15 @@
+import FadeIn from "./FadeIn";
+
 export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen bg-cream flex items-center"
+      className="min-h-screen bg-cream paw-bg flex items-center"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Text */}
-          <div className="flex flex-col gap-6">
+          <FadeIn direction="left" className="flex flex-col gap-6">
             <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-3 py-1.5 rounded-full w-fit">
               <span>🐾</span>
               <span>Upper West Side, NYC</span>
@@ -48,10 +50,14 @@ export default function Hero() {
               Available summers, winter break, and spring break — home from
               University of Florida.
             </p>
-          </div>
+          </FadeIn>
 
           {/* Image placeholder */}
-          <div className="relative h-80 sm:h-96 lg:h-[520px] rounded-3xl overflow-hidden bg-cream-dark flex items-center justify-center">
+          <FadeIn
+            direction="right"
+            delay={150}
+            className="relative h-80 sm:h-96 lg:h-[520px] rounded-3xl overflow-hidden bg-cream-dark flex items-center justify-center"
+          >
             <div
               className="absolute inset-0 opacity-20"
               style={{
@@ -65,7 +71,7 @@ export default function Hero() {
                 Photo coming soon
               </p>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </div>
     </section>
