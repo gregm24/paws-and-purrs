@@ -37,24 +37,15 @@ export default function About() {
             </h2>
 
             <blockquote className="border-l-4 border-orange pl-5 text-xl italic text-charcoal">
-              &ldquo;It started with a stack of flyers and a quiet hallway.&rdquo;
+              &ldquo;Available on short notice with affordable prices.&rdquo;
             </blockquote>
 
             <p className="text-lg text-charcoal leading-relaxed">
-              I&apos;m a sophomore studying Computer Science at the University of
-              Florida, and when I&apos;m home in NYC — summers, winter break,
-              spring break — I run Paws &amp; Purrs full time. The business
-              started simply: I made a flyer, printed a stack of them, and
-              slid one under every door in my building at Lincoln Towers on the
-              Upper West Side.
+              I’m a junior studying Computer Science at the University of Florida. When I’m home in NYC, I’m usually out around the city with friends, playing basketball, or riding Citi Bike and just exploring different parts of the neighborhood. I’ve always liked staying active and not wasting time sitting around.
             </p>
 
             <p className="text-lg text-charcoal leading-relaxed">
-              People called. Then they called back. Then they told their
-              neighbors. What started as dog walking grew into something more:
-              cat feeding, pet sitting, errands, computer help, tutoring,
-              moving assistance, childcare. Real neighbors with real needs,
-              and I genuinely enjoy helping.
+              During covid, when I had a lot more free time, I decided to start Paws &amp; Purrs. I focused on being available on short notice and keeping prices reasonable, which helped me stand out. Over time, I built relationships with a lot of pets and their owners, and it turned into something people actually rely on. I’m really grateful for that and for all the dogs and cats I’ve gotten to know.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">

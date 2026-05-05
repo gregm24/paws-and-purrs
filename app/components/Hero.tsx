@@ -26,10 +26,7 @@ export default function Hero() {
             </p>
 
             <p className="text-lg text-muted leading-relaxed max-w-md">
-              What started as a flyer slid under apartment doors at Lincoln
-              Towers is now your go-to for dog walking, cat feeding, pet
-              sitting — and so much more. Errands, tutoring, computer help,
-              moving, childcare. Real help, from a real neighbor.
+              What started as a simple flyer in my building turned into something people actually rely on. I’ve been helping out with dog walking, cat feeding, and pet sitting for a few years now, and over time it grew into more — errands, computer help, moving things, whatever people need. Nothing complicated, just being someone nearby people can count on.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">

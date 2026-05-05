@@ -38,24 +38,11 @@ export default function FutureGoal() {
 
             <FadeIn delay={240} className="flex flex-col gap-6 text-lg text-white/70 leading-relaxed">
               <p>
-                Long term, I want to take Paws &amp; Purrs beyond the Upper West
-                Side — beyond New York, honestly. The vision is simple: travel
-                the world, stay in people&apos;s homes, and care for their animals
-                while they&apos;re away. House sitting and pet care as a way of
-                life, not just a summer gig.
+                I want to take Paws &amp; Purrs beyond the Upper West Side and eventually beyond New York. The goal is to travel and stay in different places while taking care of people’s pets when they’re away.
               </p>
+             
               <p>
-                I&apos;m studying Computer Science at the University of Florida,
-                and I want to build the tools that make this kind of trust-based,
-                personal pet care scalable — not by turning it into a faceless
-                app, but by making it easier to find someone like me in whatever
-                neighborhood you live in.
-              </p>
-              <p>
-                For now, I&apos;m here on the Upper West Side, doing the work
-                myself and learning everything I can. Every client, every animal,
-                every neighbor who calls — that&apos;s the foundation of something
-                bigger. I&apos;m in no rush. The journey is the point.
+                I’m studying Computer Science at the University of Florida, and I’m interested in building tools that make it easier to find reliable pet care locally. For now I’m on the Upper West Side doing the work myself and getting experience with each client.
               </p>
             </FadeIn>
 

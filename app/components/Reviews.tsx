@@ -1,36 +1,4 @@
 import FadeIn from "./FadeIn";
-import ReviewCard from "./ReviewCard";
-
-const REVIEWS = [
-  {
-    name: "Margaret T.",
-    location: "Lincoln Towers, 19th Floor",
-    quote:
-      "Greg walked my golden retriever Bailey every morning for two weeks while I was traveling for work. So reliable, sent me photos, and Bailey adores him. Didn't think twice about booking again.",
-    stars: 5,
-  },
-  {
-    name: "David & Priya S.",
-    location: "Upper West Side",
-    quote:
-      "We left for a work trip and Greg checked in on our cats every single day. Sent us photos, let us know if anything seemed off. Total peace of mind the whole time.",
-    stars: 5,
-  },
-  {
-    name: "Carol W.",
-    location: "Lincoln Towers, 7th Floor",
-    quote:
-      "He helped me set up my new laptop and was incredibly patient the whole time. I had no idea what I was doing. He explained everything clearly and never made me feel silly for asking.",
-    stars: 5,
-  },
-  {
-    name: "James R.",
-    location: "Upper West Side",
-    quote:
-      "Greg helped me move boxes between my apartment and the building storage unit. Showed up exactly on time, worked hard, and charged a fair price. Would absolutely call him again.",
-    stars: 5,
-  },
-];
 
 export default function Reviews() {
   return (
@@ -45,18 +13,30 @@ export default function Reviews() {
             Reviews
           </h2>
           <p className="text-lg text-muted max-w-xl mx-auto">
-            Real clients from the neighborhood. Every review is from someone
-            I&apos;ve worked with personally.
+            Reviews from neighbors are coming soon. If you&apos;ve worked with
+            me, I&apos;d love to hear from you.
           </p>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {REVIEWS.map((r, i) => (
-            <FadeIn key={r.name} delay={i * 100}>
-              <ReviewCard {...r} />
-            </FadeIn>
-          ))}
-        </div>
+        <FadeIn delay={100} className="flex flex-col items-center gap-8">
+          <div className="bg-white rounded-3xl px-12 py-14 text-center max-w-lg w-full shadow-sm">
+            <div className="text-6xl mb-6">⭐</div>
+            <p className="text-2xl font-semibold text-navy mb-3">
+              Reviews coming soon
+            </p>
+            <p className="text-base text-muted">
+              Check back after I&apos;ve had a chance to collect some from clients.
+            </p>
+          </div>
+
+          <a
+            href="#"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition-colors duration-150 shadow-sm text-lg"
+          >
+            <span>✏️</span>
+            <span>Leave a Review</span>
+          </a>
+        </FadeIn>
       </div>
     </section>
   );
