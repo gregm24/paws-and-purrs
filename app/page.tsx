@@ -5,6 +5,7 @@ import Services from "./components/Services";
 import Booking from "./components/Booking";
 import Reviews from "./components/Reviews";
 import Gallery from "./components/Gallery";
+import Charities from "./components/Charities";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Booking />
         <Reviews />
         <Gallery />
+        <Charities />
       </main>
     </>
   );
