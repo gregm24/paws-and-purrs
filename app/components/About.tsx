@@ -11,7 +11,7 @@ export default function About() {
             direction="left"
             className="flex justify-center lg:justify-start order-2 lg:order-1"
           >
-            <div className="relative w-72 h-72 sm:w-96 sm:h-96 rounded-3xl overflow-hidden shadow-xl">
+            <div className="relative w-full max-w-sm sm:max-w-md aspect-square rounded-3xl overflow-hidden shadow-xl">
               <Image
                 src="/images/aboutme.jpeg"
                 alt="Greg Myers"

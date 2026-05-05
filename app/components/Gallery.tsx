@@ -15,10 +15,14 @@ const PETS = [
   { name: "Ribeye", src: "/images/ribeye.jpeg" },
   { name: "Rufus", src: "/images/rufus.jpeg" },
   { name: "Slurpee", src: "/images/slurpee.jpeg" },
+  { name: "Brooklyn", src: "/images/brooklyn.jpeg" },
 ];
 
-function GalleryCell({ startIndex, staggerMs }: { startIndex: number; staggerMs: number }) {
-  const [index, setIndex] = useState(startIndex % PETS.length);
+// Pair pets: cell i shows PETS[i*2] and PETS[i*2+1] alternating
+function GalleryCell({ pairIndex, staggerMs }: { pairIndex: number; staggerMs: number }) {
+  const petA = PETS[pairIndex * 2];
+  const petB = PETS[pairIndex * 2 + 1];
+  const [showA, setShowA] = useState(true);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -26,16 +30,16 @@ function GalleryCell({ startIndex, staggerMs }: { startIndex: number; staggerMs:
       const interval = setInterval(() => {
         setVisible(false);
         setTimeout(() => {
-          setIndex((prev) => (prev + 1) % PETS.length);
+          setShowA((prev) => !prev);
           setVisible(true);
-        }, 500);
-      }, 4500);
+        }, 900);
+      }, 7000);
       return () => clearInterval(interval);
     }, staggerMs);
     return () => clearTimeout(timeout);
   }, [staggerMs]);
 
-  const pet = PETS[index];
+  const pet = showA ? petA : petB;
 
   return (
     <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg">
@@ -43,12 +47,12 @@ function GalleryCell({ startIndex, staggerMs }: { startIndex: number; staggerMs:
         src={pet.src}
         alt={pet.name}
         fill
-        className={`object-cover transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
+        className={`object-cover transition-opacity duration-900 ${visible ? "opacity-100" : "opacity-0"}`}
         sizes="(max-width: 640px) 100vw, 33vw"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
       <span
-        className={`absolute bottom-4 left-4 text-white font-semibold text-lg drop-shadow transition-opacity duration-500 ${visible ? "opacity-100" : "opacity-0"}`}
+        className={`absolute bottom-4 left-4 text-white font-semibold text-lg drop-shadow transition-opacity duration-900 ${visible ? "opacity-100" : "opacity-0"}`}
       >
         {pet.name}
       </span>
@@ -75,7 +79,7 @@ export default function Gallery() {
 
         <div className="grid grid-cols-3 gap-5">
           {[0, 1, 2, 3, 4, 5].map((i) => (
-            <GalleryCell key={i} startIndex={i} staggerMs={1000 + i * 700} />
+            <GalleryCell key={i} pairIndex={i} staggerMs={i * 1200} />
           ))}
         </div>
       </div>
