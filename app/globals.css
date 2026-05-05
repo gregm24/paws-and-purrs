@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FDF6EC;
+  --foreground: #2E2E2E;
 }
 
 @theme inline {
@@ -10,17 +10,26 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Paws & Purrs brand palette */
+  --color-cream:        #FDF6EC;
+  --color-cream-dark:   #F5E8D0;
+  --color-orange:       #E8722A;
+  --color-orange-light: #F4945A;
+  --color-orange-pale:  #FDE8D8;
+  --color-navy:         #1B2A4A;
+  --color-navy-light:   #2D4270;
+  --color-charcoal:     #2E2E2E;
+  --color-muted:        #7A7A7A;
+  --color-white:        #FFFFFF;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-cream);
+  color: var(--color-charcoal);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
