@@ -1,38 +1,35 @@
 'use client';
 
 import { useState } from 'react';
+import BookingsTab, { type Booking } from './BookingsTab';
+import ReviewsTab, { type Review } from './ReviewsTab';
 
-type Booking = {
-  timestamp: string;
-  name: string;
-  email: string;
-  service: string;
-  date: string;
-  notes: string;
-};
+type Tab = 'bookings' | 'reviews';
 
 export default function AdminPage() {
   const [password, setPassword] = useState('');
   const [authed, setAuthed] = useState(false);
+  const [tab, setTab] = useState<Tab>('bookings');
   const [bookings, setBookings] = useState<Booking[]>([]);
+  const [reviews, setReviews] = useState<Review[]>([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+
+  const authHeaders = (pw: string) => ({ Authorization: `Bearer ${pw}` });
 
   const login = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/admin/bookings', {
-        headers: { Authorization: `Bearer ${password}` },
-      });
-      if (!res.ok) {
-        setError('Wrong password.');
-        setLoading(false);
-        return;
-      }
-      const data = await res.json();
-      setBookings(data.bookings);
+      const [bRes, rRes] = await Promise.all([
+        fetch('/api/admin/bookings', { headers: authHeaders(password) }),
+        fetch('/api/admin/reviews', { headers: authHeaders(password) }),
+      ]);
+      if (!bRes.ok) { setError('Wrong password.'); setLoading(false); return; }
+      const [bData, rData] = await Promise.all([bRes.json(), rRes.json()]);
+      setBookings(bData.bookings ?? []);
+      setReviews(rData.reviews ?? []);
       setAuthed(true);
     } catch {
       setError('Failed to connect.');
@@ -40,13 +37,16 @@ export default function AdminPage() {
     setLoading(false);
   };
 
+  const refreshReviews = async () => {
+    const res = await fetch('/api/admin/reviews', { headers: authHeaders(password) });
+    const data = await res.json();
+    setReviews(data.reviews ?? []);
+  };
+
   if (!authed) {
     return (
       <div className="min-h-screen bg-navy flex items-center justify-center">
-        <form
-          onSubmit={login}
-          className="bg-white/10 rounded-2xl p-8 w-full max-w-sm flex flex-col gap-4"
-        >
+        <form onSubmit={login} className="bg-white/10 rounded-2xl p-8 w-full max-w-sm flex flex-col gap-4">
           <h1 className="text-2xl font-bold text-white">Admin</h1>
           <input
             type="password"
@@ -56,11 +56,7 @@ export default function AdminPage() {
             className="px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/40 focus:outline-none focus:border-orange transition"
           />
           {error && <p className="text-red-400 text-sm">{error}</p>}
-          <button
-            type="submit"
-            disabled={loading}
-            className="px-6 py-3 bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition disabled:opacity-60"
-          >
+          <button type="submit" disabled={loading} className="px-6 py-3 bg-orange text-white font-semibold rounded-full hover:bg-orange-light transition disabled:opacity-60">
             {loading ? 'Checking…' : 'Login'}
           </button>
         </form>
@@ -68,45 +64,35 @@ export default function AdminPage() {
     );
   }
 
+  const tabs: { id: Tab; label: string; count: number }[] = [
+    { id: 'bookings', label: 'Bookings', count: bookings.length },
+    { id: 'reviews', label: 'Reviews', count: reviews.length },
+  ];
+
   return (
     <div className="min-h-screen bg-cream p-8">
       <div className="max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-navy">Bookings</h1>
-          <span className="text-muted text-sm">{bookings.length} total</span>
+        <div className="flex items-center gap-6 mb-8">
+          {tabs.map((t) => (
+            <button
+              key={t.id}
+              onClick={() => setTab(t.id)}
+              className={`flex items-center gap-2 pb-2 font-semibold text-sm border-b-2 transition-colors ${
+                tab === t.id ? 'border-orange text-navy' : 'border-transparent text-muted hover:text-charcoal'
+              }`}
+            >
+              {t.label}
+              <span className={`px-2 py-0.5 rounded-full text-xs ${tab === t.id ? 'bg-orange/10 text-orange' : 'bg-navy/10 text-navy/50'}`}>
+                {t.count}
+              </span>
+            </button>
+          ))}
         </div>
-        {bookings.length === 0 ? (
-          <p className="text-muted">No bookings yet.</p>
+
+        {tab === 'bookings' ? (
+          <BookingsTab bookings={bookings} />
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="text-left border-b border-navy/20">
-                  {['Submitted', 'Name', 'Email', 'Service', 'Date', 'Notes'].map((h) => (
-                    <th key={h} className="pb-3 pr-6 text-navy font-semibold">{h}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {bookings.map((b, i) => (
-                  <tr key={i} className="border-b border-navy/10 hover:bg-navy/5 transition-colors">
-                    <td className="py-3 pr-6 text-muted whitespace-nowrap">
-                      {new Date(b.timestamp).toLocaleDateString()}
-                    </td>
-                    <td className="py-3 pr-6 font-medium text-charcoal">{b.name}</td>
-                    <td className="py-3 pr-6 text-muted">{b.email}</td>
-                    <td className="py-3 pr-6">
-                      <span className="px-2 py-1 bg-orange/10 text-orange text-xs font-semibold rounded-full">
-                        {b.service}
-                      </span>
-                    </td>
-                    <td className="py-3 pr-6 text-muted whitespace-nowrap">{b.date}</td>
-                    <td className="py-3 text-muted">{b.notes || '—'}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <ReviewsTab reviews={reviews} password={password} onRefresh={refreshReviews} />
         )}
       </div>
     </div>

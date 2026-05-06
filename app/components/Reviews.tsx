@@ -1,5 +1,37 @@
-import FadeIn from "./FadeIn";
-import ReviewForm from "./ReviewForm";
+import { google } from 'googleapis';
+import FadeIn from './FadeIn';
+import ReviewForm from './ReviewForm';
+import ReviewCard from './ReviewCard';
+
+type Review = { name: string; rating: number; review: string };
+
+async function getApprovedReviews(): Promise<Review[]> {
+  try {
+    const auth = new google.auth.GoogleAuth({
+      credentials: {
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
+        private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+      },
+      scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
+    });
+    const sheets = google.sheets({ version: 'v4', auth });
+    const res = await sheets.spreadsheets.values.get({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: 'Reviews!A:E',
+    });
+    const rows = res.data.values ?? [];
+    const data = rows[0]?.[0] === 'Timestamp' ? rows.slice(1) : rows;
+    return data
+      .filter((row) => row[4] === 'TRUE')
+      .map((row) => ({
+        name: row[1] ?? 'Anonymous',
+        rating: Math.round((parseFloat(row[2]) || 5) * 2) / 2,
+        review: row[3] ?? '',
+      }));
+  } catch {
+    return [];
+  }
+}
 
 function PlaceholderCard() {
   return (
@@ -21,7 +53,9 @@ function PlaceholderCard() {
   );
 }
 
-export default function Reviews() {
+export default async function Reviews() {
+  const reviews = await getApprovedReviews();
+
   return (
     <section id="reviews" className="bg-orange-pale paw-bg py-28 lg:py-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -30,32 +64,33 @@ export default function Reviews() {
             <span>⭐</span>
             <span>Reviews</span>
           </div>
-          <h2 className="text-5xl sm:text-6xl font-bold text-navy">
-            What Neighbors Say
-          </h2>
+          <h2 className="text-5xl sm:text-6xl font-bold text-navy">What Neighbors Say</h2>
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-14 items-start">
-          {/* Left 1/3: form */}
           <FadeIn direction="left" className="flex flex-col gap-6">
             <p className="text-base text-charcoal/70 leading-relaxed">
-              Worked with me? I&apos;d love to hear from you — reviews help
-              neighbors find someone they can trust.
+              Worked with me? I&apos;d love to hear from you — reviews help neighbors find someone they can trust.
             </p>
             <ReviewForm />
           </FadeIn>
 
-          {/* Right 2/3: placeholder cards */}
           <FadeIn direction="right" delay={150} className="lg:col-span-2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              <PlaceholderCard />
-              <PlaceholderCard />
-              <PlaceholderCard />
-              <PlaceholderCard />
-            </div>
-            <p className="text-sm text-muted text-center mt-6">
-              Reviews will appear here once submitted
-            </p>
+            {reviews.length > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {reviews.map((r, i) => (
+                  <ReviewCard key={i} name={r.name} rating={r.rating} review={r.review} />
+                ))}
+              </div>
+            ) : (
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <PlaceholderCard /><PlaceholderCard />
+                  <PlaceholderCard /><PlaceholderCard />
+                </div>
+                <p className="text-sm text-muted text-center mt-6">Reviews will appear here once submitted</p>
+              </>
+            )}
           </FadeIn>
         </div>
       </div>
