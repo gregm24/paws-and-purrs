@@ -13,7 +13,7 @@ export default function Hero() {
           <FadeIn
             direction="right"
             delay={150}
-            className="relative h-48 sm:h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2"
+            className="relative h-64 sm:h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2"
           >
             <Image
               src="/images/banner2.jpeg"
