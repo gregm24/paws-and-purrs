@@ -60,7 +60,7 @@ export default function ReviewsTab({ reviews, password, onRefresh }: Props) {
               </td>
               <td className="py-3 pr-4 font-medium text-charcoal">{r.name}</td>
               <td className="py-3 pr-4 text-muted">{r.rating || '—'}</td>
-              <td className="py-3 pr-4 text-muted max-w-xs truncate">{r.review}</td>
+              <td className="py-3 pr-4 text-muted max-w-xs">{r.review}</td>
               <td className="py-3 pr-4">
                 <button
                   onClick={() => toggle(r.row, !r.display)}
