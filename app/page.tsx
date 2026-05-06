@@ -16,6 +16,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
+      {/* Spacer matches fixed nav height: h-14+pill on mobile, h-20+pill on sm, h-20 on md+ */}
+      <div className="h-[101px] sm:h-[125px] md:h-20" aria-hidden="true" />
       <main className="flex flex-col">
         <Hero />
         <About />

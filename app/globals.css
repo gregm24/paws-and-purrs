@@ -26,11 +26,11 @@
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   background: var(--color-cream);
   color: var(--color-charcoal);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
@@ -38,6 +38,11 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar { display: none; }
 .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Offset anchor targets so they land below the fixed nav */
+section[id] { scroll-margin-top: 101px; }
+@media (min-width: 640px) { section[id] { scroll-margin-top: 125px; } }
+@media (min-width: 768px) { section[id] { scroll-margin-top: 80px; } }
 
 /* Paw print repeat patterns — applied as background-image on top of bg color */
 .paw-bg {
