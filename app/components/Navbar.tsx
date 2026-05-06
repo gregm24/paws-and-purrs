@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import NavLinks from "./NavLinks";
 
 const NAV_LINKS = [
@@ -15,9 +15,9 @@ const NAV_LINKS = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const pillsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
@@ -30,9 +30,7 @@ export default function Navbar() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
       { rootMargin: "-20% 0px -70% 0px" }
@@ -41,7 +39,16 @@ export default function Navbar() {
     return () => observer.disconnect();
   }, []);
 
-  const closeMenu = () => setIsOpen(false);
+  // Keep active pill scrolled into view
+  useEffect(() => {
+    const container = pillsRef.current;
+    if (!container) return;
+    const pill = container.querySelector<HTMLElement>(`[data-section="${activeSection}"]`);
+    if (pill) {
+      container.scrollLeft =
+        pill.offsetLeft - container.offsetWidth / 2 + pill.offsetWidth / 2;
+    }
+  }, [activeSection]);
 
   return (
     <nav
@@ -49,17 +56,15 @@ export default function Navbar() {
         scrolled ? "bg-navy shadow-lg" : "bg-navy/95"
       }`}
     >
+      {/* Header bar */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-14 sm:h-20">
           <a
             href="#home"
-            className="text-2xl font-bold text-orange tracking-tight hover:text-orange-light transition-colors"
+            className="text-xl sm:text-2xl font-bold text-orange tracking-tight hover:text-orange-light transition-colors"
           >
             Paws &amp; Purrs
           </a>
-
-          {/* Desktop nav */}
           <div className="hidden md:block">
             <NavLinks
               links={NAV_LINKS}
@@ -67,38 +72,34 @@ export default function Navbar() {
               orientation="horizontal"
             />
           </div>
-
-          {/* Mobile hamburger */}
-          <button
-            onClick={() => setIsOpen((o) => !o)}
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-            aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="md:hidden p-2 rounded-md text-cream hover:bg-navy-light transition-colors"
-          >
-            <span className="block w-5 h-0.5 bg-current mb-1 transition-all" />
-            <span
-              className={`block w-5 h-0.5 bg-current mb-1 transition-all ${isOpen ? "opacity-0" : ""}`}
-            />
-            <span className="block w-5 h-0.5 bg-current transition-all" />
-          </button>
         </div>
       </div>
 
-      {/* Mobile drawer */}
-      {isOpen && (
+      {/* Mobile pill strip — visible below md */}
+      <div className="md:hidden border-t border-white/10">
         <div
-          id="mobile-menu"
-          className="md:hidden bg-navy border-t border-navy-light px-4 pb-4"
+          ref={pillsRef}
+          className="scrollbar-hide flex gap-2 px-4 py-2 overflow-x-auto"
         >
-          <NavLinks
-            links={NAV_LINKS}
-            activeSection={activeSection}
-            orientation="vertical"
-            onLinkClick={closeMenu}
-          />
+          {NAV_LINKS.map((link) => {
+            const active = activeSection === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                data-section={link.href.slice(1)}
+                className={`shrink-0 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors ${
+                  active
+                    ? "bg-orange text-white"
+                    : "bg-white/10 text-white/60 hover:bg-white/20 hover:text-white"
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
         </div>
-      )}
+      </div>
     </nav>
   );
 }
