@@ -26,9 +26,11 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
+  overflow-x: hidden;
   background: var(--color-cream);
   color: var(--color-charcoal);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
