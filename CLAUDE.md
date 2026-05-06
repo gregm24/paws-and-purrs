@@ -78,3 +78,4 @@ Single-page scrolling site with navbar links jumping to each section:
 - Don't make it look like a Fiverr template
 - Don't over-animate -- subtle is better
 - Don't use placeholder text like "Lorem ipsum"
+- **Keep README.md up to date.** After adding or significantly changing any feature — new API routes, new sections, new integrations, changes to the data model or auth flow — update the relevant section(s) of README.md in the same commit. The README should always accurately describe what the project does and how it works.
