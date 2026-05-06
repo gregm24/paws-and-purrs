@@ -13,7 +13,7 @@ export default function About() {
           >
             <div className="relative w-full max-w-[200px] sm:max-w-xs lg:max-w-sm aspect-square rounded-3xl overflow-hidden shadow-xl">
               <Image
-                src="/images/aboutme.jpeg"
+                src="/images/home.jpeg"
                 alt="Greg Myers"
                 fill
                 className="object-cover"

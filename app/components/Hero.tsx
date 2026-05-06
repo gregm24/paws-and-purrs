@@ -5,23 +5,27 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="bg-cream paw-bg flex flex-col"
+      className="min-h-screen bg-cream paw-bg flex items-center"
     >
-      {/* Full-width banner */}
-      <div className="relative w-full h-56 sm:h-72 lg:h-96 overflow-hidden">
-        <Image
-          src="/images/banner2.jpeg"
-          alt="Cats cared for by Paws & Purrs"
-          fill
-          className="object-cover object-[center_60%]"
-          priority
-        />
-      </div>
-
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-36 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
-          {/* Text */}
-          <FadeIn direction="left" className="flex flex-col gap-5 sm:gap-8">
+          {/* Hero photo — first on mobile, right on desktop */}
+          <FadeIn
+            direction="right"
+            delay={150}
+            className="relative h-48 sm:h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl order-1 lg:order-2"
+          >
+            <Image
+              src="/images/banner2.jpeg"
+              alt="Paws & Purrs"
+              fill
+              className="object-cover object-[center_60%]"
+              priority
+            />
+          </FadeIn>
+
+          {/* Text — second on mobile, left on desktop */}
+          <FadeIn direction="left" className="flex flex-col gap-5 sm:gap-8 order-2 lg:order-1">
             <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-4 py-2 rounded-full w-fit">
               <span>🐾</span>
               <span>Upper West Side, NYC</span>
@@ -37,7 +41,7 @@ export default function Hero() {
             </p>
 
             <p className="text-base sm:text-lg text-muted leading-relaxed max-w-md">
-              What started as a simple flyer in my building turned into something people actually rely on. I’ve been helping out with dog walking, cat feeding, and pet sitting for a few years now, and over time it grew into more — errands, computer help, moving things, whatever people need. Nothing complicated, just being someone nearby people can count on.
+              What started as a simple flyer in my building turned into something people actually rely on. I've been helping out with dog walking, cat feeding, and pet sitting for a few years now, and over time it grew into more — errands, computer help, moving things, whatever people need. Nothing complicated, just being someone nearby people can count on.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
@@ -75,21 +79,6 @@ export default function Hero() {
               Available summers, winter break, and spring break — home from
               University of Florida.
             </p>
-          </FadeIn>
-
-          {/* Hero photo */}
-          <FadeIn
-            direction="right"
-            delay={150}
-            className="relative h-60 sm:h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
-          >
-            <Image
-              src="/images/home.jpeg"
-              alt="Paws & Purrs"
-              fill
-              className="object-cover"
-              priority
-            />
           </FadeIn>
         </div>
       </div>
