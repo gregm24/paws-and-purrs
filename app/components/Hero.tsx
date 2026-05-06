@@ -13,7 +13,7 @@ export default function Hero() {
           src="/images/banner2.jpeg"
           alt="Cats cared for by Paws & Purrs"
           fill
-          className="object-cover object-center"
+          className="object-cover object-[center_60%]"
           priority
         />
       </div>
