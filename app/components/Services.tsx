@@ -7,14 +7,14 @@ const PET_SERVICES = [
     title: "Dog Walking",
     description:
       "Daily or one-off walks around Lincoln Towers and Riverside Park. Your dog gets exercise, fresh air, and a familiar face.",
-    price: "$15",
+    price: "$18",
   },
   {
     icon: "🐈",
     title: "Cat Feeding",
     description:
       "I'll stop by, fill the bowl, refresh the water, and give them some attention. Perfect for travel or long work days.",
-    price: "$15",
+    price: "$18",
   },
   {
     icon: "🏠",
