@@ -92,7 +92,7 @@ export default function Services() {
           <h3 className="text-xl sm:text-2xl font-bold text-navy mb-5 sm:mb-8 flex items-center gap-2">
             <span>🐾</span> Pet Services
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {PET_SERVICES.map((s, i) => (
               <FadeIn key={s.title} delay={i * 100}>
                 <ServiceCard {...s} />
@@ -114,7 +114,7 @@ export default function Services() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {NEIGHBORHOOD_SERVICES.map((s, i) => (
               <FadeIn key={s.title} delay={i * 80}>
                 <ServiceCard {...s} />
