@@ -41,11 +41,11 @@ export default function About() {
             </blockquote>
 
             <p className="text-base sm:text-lg text-charcoal leading-relaxed">
-              I’m a junior studying Computer Science at the University of Florida. When I’m home in NYC, I’m usually out around the city with friends, playing basketball, or riding Citi Bike and just exploring different parts of the neighborhood. I’ve always liked staying active and not wasting time sitting around.
+              I’m a junior studying Computer Science at the University of Florida. When I’m home in NYC, I’m usually out around the city with friends, playing basketball, or riding Citi Bike and exploring different parts of the city. I’ve always liked staying active and not wasting time sitting around.
             </p>
 
             <p className="text-base sm:text-lg text-charcoal leading-relaxed">
-              During covid, when I had a lot more free time, I decided to start Paws &amp; Purrs. I focused on being available on short notice and keeping prices reasonable, which helped me stand out. Over time, I built relationships with a lot of pets and their owners, and it turned into something people actually rely on. I’m really grateful for that and for all the dogs and cats I’ve gotten to know.
+              During Covid, when I had a lot more free time, I decided to start Paws &amp; Purrs. I focused on being available on short notice and keeping prices reasonable, which helped me stand out. Over time, I built relationships with a lot of pets and their owners, and it turned into something people actually rely on. I’m really grateful for that and for all the dogs and cats I’ve gotten to know.
             </p>
 
             <div className="flex flex-wrap gap-3 pt-2">
