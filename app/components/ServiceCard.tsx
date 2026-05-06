@@ -12,7 +12,7 @@ export default function ServiceCard({
   price,
 }: ServiceCardProps) {
   return (
-    <div className="bg-white rounded-2xl p-8 shadow-sm border border-cream-dark flex flex-col gap-4 hover:shadow-md transition-shadow duration-150">
+    <div className="bg-white rounded-2xl p-5 sm:p-8 shadow-sm border border-cream-dark flex flex-col gap-3 sm:gap-4 hover:shadow-md transition-shadow duration-150">
       <div className="text-4xl">{icon}</div>
       <div className="flex items-start justify-between gap-2">
         <h3 className="text-lg font-semibold text-navy">{title}</h3>

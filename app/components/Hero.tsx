@@ -7,25 +7,25 @@ export default function Hero() {
       id="home"
       className="min-h-screen bg-cream paw-bg flex items-center"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-28 lg:py-36 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-36 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
           {/* Text */}
-          <FadeIn direction="left" className="flex flex-col gap-8">
+          <FadeIn direction="left" className="flex flex-col gap-5 sm:gap-8">
             <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-4 py-2 rounded-full w-fit">
               <span>🐾</span>
               <span>Upper West Side, NYC</span>
             </div>
 
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-navy leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-navy leading-tight tracking-tight">
               Paws &amp; Purrs
             </h1>
 
-            <p className="text-2xl sm:text-3xl text-charcoal font-medium leading-snug max-w-md">
+            <p className="text-lg sm:text-2xl lg:text-3xl text-charcoal font-medium leading-snug max-w-md">
               Pet care and a helping hand,{" "}
               <span className="text-orange">right in your neighborhood.</span>
             </p>
 
-            <p className="text-lg text-muted leading-relaxed max-w-md">
+            <p className="text-base sm:text-lg text-muted leading-relaxed max-w-md">
               What started as a simple flyer in my building turned into something people actually rely on. I’ve been helping out with dog walking, cat feeding, and pet sitting for a few years now, and over time it grew into more — errands, computer help, moving things, whatever people need. Nothing complicated, just being someone nearby people can count on.
             </p>
 
@@ -70,7 +70,7 @@ export default function Hero() {
           <FadeIn
             direction="right"
             delay={150}
-            className="relative h-96 sm:h-[480px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
+            className="relative h-60 sm:h-[400px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl"
           >
             <Image
               src="/images/home.jpeg"

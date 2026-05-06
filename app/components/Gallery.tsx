@@ -62,14 +62,14 @@ function GalleryCell({ pairIndex, staggerMs }: { pairIndex: number; staggerMs: n
 
 export default function Gallery() {
   return (
-    <section id="gallery" className="bg-cream paw-bg py-28 lg:py-40">
+    <section id="gallery" className="bg-cream paw-bg py-16 sm:py-20 lg:py-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 sm:mb-16">
           <div className="inline-flex items-center gap-2 bg-orange-pale text-orange text-sm font-medium px-4 py-2 rounded-full mb-5">
             <span>📷</span>
             <span>The Regulars</span>
           </div>
-          <h2 className="text-5xl sm:text-6xl font-bold text-navy mb-5">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-navy mb-5">
             Friends I&apos;ve Cared For
           </h2>
           <p className="text-lg text-muted max-w-xl mx-auto">
@@ -77,7 +77,7 @@ export default function Gallery() {
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
           {[0, 1, 2, 3, 4, 5].map((i) => (
             <GalleryCell key={i} pairIndex={i} staggerMs={i * 1200} />
           ))}

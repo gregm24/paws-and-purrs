@@ -3,17 +3,17 @@ import FadeIn from "./FadeIn";
 
 export default function Booking() {
   return (
-    <section id="booking" className="bg-navy paw-bg-dark py-28 lg:py-40">
+    <section id="booking" className="bg-navy paw-bg-dark py-16 sm:py-20 lg:py-40">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-24 items-start">
           {/* Left: copy */}
-          <FadeIn direction="left" className="flex flex-col gap-8">
+          <FadeIn direction="left" className="flex flex-col gap-5 sm:gap-8">
             <div className="inline-flex items-center gap-2 bg-white/10 text-orange text-sm font-medium px-4 py-2 rounded-full w-fit">
               <span>📅</span>
               <span>Get Started</span>
             </div>
 
-            <h2 className="text-5xl sm:text-6xl font-bold text-white leading-tight">
+            <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
               Book a Service
             </h2>
 
