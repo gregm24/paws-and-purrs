@@ -5,8 +5,19 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen bg-cream paw-bg flex items-center"
+      className="bg-cream paw-bg flex flex-col"
     >
+      {/* Full-width banner */}
+      <div className="relative w-full h-64 sm:h-80 lg:h-96 overflow-hidden">
+        <Image
+          src="/images/banner.jpeg"
+          alt="Cats cared for by Paws & Purrs"
+          fill
+          className="object-cover object-center"
+          priority
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-36 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-24 items-center">
           {/* Text */}
