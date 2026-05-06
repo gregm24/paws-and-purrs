@@ -21,7 +21,7 @@ export async function GET(request: Request) {
     const sheets = getSheetsClient();
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Sheet1!A:F',
+      range: 'Bookings!A:F',
     });
 
     const rows = res.data.values ?? [];

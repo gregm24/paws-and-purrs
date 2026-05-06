@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const sheets = getSheetsClient();
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: 'Sheet1!A:F',
+      range: 'Bookings!A:F',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [[new Date().toISOString(), name, email, service, date, notes ?? '']],
