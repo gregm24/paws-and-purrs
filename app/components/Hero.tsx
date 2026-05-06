@@ -8,7 +8,7 @@ export default function Hero() {
       className="bg-cream paw-bg flex flex-col"
     >
       {/* Full-width banner */}
-      <div className="relative w-full h-40 sm:h-52 lg:h-64 overflow-hidden">
+      <div className="relative w-full h-56 sm:h-72 lg:h-96 overflow-hidden">
         <Image
           src="/images/banner2.jpeg"
           alt="Cats cared for by Paws & Purrs"
