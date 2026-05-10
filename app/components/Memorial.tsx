@@ -3,7 +3,7 @@ import FadeIn from "./FadeIn";
 
 export default function Memorial() {
   return (
-    <section className="bg-cream-dark py-28 lg:py-40">
+    <section className="bg-cream-dark py-10 sm:py-12 lg:py-16">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="text-center mb-14">
           <p className="text-orange text-sm font-medium tracking-widest uppercase mb-4">
