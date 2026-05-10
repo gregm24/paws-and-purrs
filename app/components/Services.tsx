@@ -6,6 +6,7 @@ type ServiceData = {
   description: string;
   price: string;
   image: string;
+  alwaysShowPrice?: boolean;
 };
 
 const PET_SERVICES: ServiceData[] = [
@@ -15,6 +16,7 @@ const PET_SERVICES: ServiceData[] = [
       "Daily or one-off walks around Lincoln Towers and Riverside Park. Your dog gets exercise, fresh air, and a familiar face.",
     price: "$18",
     image: "/images/dogwalking.webp",
+    alwaysShowPrice: true,
   },
   {
     title: "Cat Feeding",
@@ -22,6 +24,7 @@ const PET_SERVICES: ServiceData[] = [
       "I'll stop by, fill the bowl, refresh the water, and give them some attention. Perfect for travel or long work days.",
     price: "$18",
     image: "/images/catsitting.png",
+    alwaysShowPrice: true,
   },
   {
     title: "Pet Sitting",
@@ -29,6 +32,7 @@ const PET_SERVICES: ServiceData[] = [
       "30-minute in-home visits while you're away. Feeding, play time, and a check-in so you know everything's fine.",
     price: "$20",
     image: "/images/petsitting.webp",
+    alwaysShowPrice: true,
   },
 ];
 
@@ -77,7 +81,7 @@ const NEIGHBORHOOD_SERVICES: ServiceData[] = [
   },
 ];
 
-function ServiceCard({ title, description, price, image }: ServiceData) {
+function ServiceCard({ title, description, price, image, alwaysShowPrice }: ServiceData) {
   return (
     <div className="group relative h-36 sm:h-40 lg:h-44 overflow-hidden cursor-default transition-transform duration-500 hover:scale-[1.02]">
       <Image
@@ -94,10 +98,19 @@ function ServiceCard({ title, description, price, image }: ServiceData) {
         <h3 className="font-serif text-lg sm:text-xl text-white leading-tight">
           {title}
         </h3>
-        <div className="mt-1.5 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-          <p className="text-xs text-white/75 leading-snug mb-1.5">{description}</p>
-          <span className="text-sm font-semibold text-orange">{price}</span>
-        </div>
+        {alwaysShowPrice ? (
+          <>
+            <span className="text-sm font-semibold text-orange mt-1">{price}</span>
+            <div className="mt-1 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+              <p className="text-xs text-white/75 leading-snug">{description}</p>
+            </div>
+          </>
+        ) : (
+          <div className="mt-1.5 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+            <p className="text-xs text-white/75 leading-snug mb-1.5">{description}</p>
+            <span className="text-sm font-semibold text-orange">{price}</span>
+          </div>
+        )}
       </div>
     </div>
   );
