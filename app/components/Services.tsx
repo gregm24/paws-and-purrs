@@ -87,8 +87,9 @@ function ServiceCard({ title, description, price, image }: ServiceData) {
         sizes="(max-width: 640px) 50vw, 33vw"
         className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/30 to-transparent" />
-      <div className="absolute inset-0 bg-navy/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute inset-0 bg-navy/65" />
+      <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-navy/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
         <h3 className="font-serif text-lg sm:text-xl text-white leading-tight">
           {title}
