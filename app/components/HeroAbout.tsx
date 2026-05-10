@@ -32,7 +32,7 @@ export default function HeroAbout() {
           </h1>
 
           <p className="text-lg sm:text-xl text-charcoal leading-relaxed max-w-sm">
-            Pet care and a helping hand,{" "}
+            Pet care, errands, and whatever else you need,{" "}
             <span className="text-orange">right in your neighborhood.</span>
           </p>
 
