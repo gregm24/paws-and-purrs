@@ -16,24 +16,35 @@ const STRIP_IMAGES = [
 ];
 
 export default function Booking() {
-  const looped = [...STRIP_IMAGES, ...STRIP_IMAGES];
+  const row1 = [...STRIP_IMAGES, ...STRIP_IMAGES];
+  const row2 = [...[...STRIP_IMAGES].reverse(), ...[...STRIP_IMAGES].reverse()];
 
   return (
     <section id="booking" className="relative bg-navy overflow-hidden py-16 sm:py-20 lg:py-40">
-      {/* Scrolling photo strip — decorative background */}
-      <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-        <div className="animate-marquee flex h-full opacity-[0.07]">
-          {looped.map((src, i) => (
-            <div key={i} className="relative shrink-0 w-36 sm:w-48 h-full mr-2">
-              <Image
-                src={src}
-                alt=""
-                fill
-                sizes="192px"
-                className="object-cover"
-              />
-            </div>
-          ))}
+      {/* Two-row scrolling photo strip — decorative background */}
+      <div
+        className="absolute inset-0 pointer-events-none select-none flex flex-col opacity-[0.09]"
+        aria-hidden="true"
+      >
+        {/* Row 1 — scrolls left */}
+        <div className="flex-1 overflow-hidden">
+          <div className="animate-marquee flex gap-2 h-full">
+            {row1.map((src, i) => (
+              <div key={i} className="relative shrink-0 w-48 sm:w-64 h-full">
+                <Image src={src} alt="" fill sizes="256px" className="object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Row 2 — scrolls right, different image order */}
+        <div className="flex-1 overflow-hidden mt-2">
+          <div className="animate-marquee-reverse flex gap-2 h-full">
+            {row2.map((src, i) => (
+              <div key={i} className="relative shrink-0 w-48 sm:w-64 h-full">
+                <Image src={src} alt="" fill sizes="256px" className="object-cover" />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
