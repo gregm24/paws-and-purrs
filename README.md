@@ -8,7 +8,7 @@ A full-stack business website for Paws & Purrs, a pet care and neighborhood help
 
 ## What This Project Is
 
-Most pet sitter websites are generic templates. This one was built from scratch to feel like a startup landing page — warm but modern, with real backend functionality that actually runs the business.
+Most pet sitter websites are generic templates. This one was built from scratch to feel like a boutique editorial landing page — warm but modern, with real backend functionality that actually runs the business.
 
 Beyond being a marketing page, the site handles the full booking lifecycle: a visitor submits a request through the form, the data is saved to a Google Sheet, confirmation emails go to both the customer and the owner, and the owner can manage everything through a password-protected admin dashboard. The reviews section is similarly end-to-end: visitors submit reviews, the owner approves them in the admin panel, and approved reviews render live on the site.
 
@@ -40,7 +40,13 @@ Beyond being a marketing page, the site handles the full booking lifecycle: a vi
 
 ### Single-Page Scrolling Layout
 
-Nine named sections on a single page: Hero, About, Services, Booking, Reviews, Gallery, Charities, Future Goal, and Footer. Navbar links use native anchor IDs for smooth scrolling. On desktop the full link list renders in the header. On mobile and narrow windows, a horizontally scrollable row of sticky pill buttons replaces the traditional hamburger menu — the active section's pill is always visible because it auto-scrolls to center as the user moves through the page.
+Five named sections on a single page: Hero/About (merged), Services, Booking, Reviews, and Memorial. Navbar links use native anchor IDs for smooth scrolling. On desktop the full link list renders in the header. On mobile and narrow windows, a horizontally scrollable row of sticky pill buttons replaces the traditional hamburger menu — the active section's pill is always visible because it auto-scrolls to center as the user moves through the page.
+
+### Editorial Design
+
+The site uses **Cormorant Garamond** (serif) for headings and **Jost** (geometric sans-serif) for body text, loaded via `next/font/google`. The palette anchors on deep navy `#1B2A4A` with warm cream `#FDF6EC` as the background and orange `#E8722A` as the accent.
+
+The hero is a full-viewport split layout — photo on the left, text and contact info on the right — with no decorative patterns or rounded pill badges. The services section uses image-background cards with a navy tint overlay; hovering reveals the description and (for neighborhood services) price. The booking section features a two-row horizontally scrolling marquee of pet photos as a decorative background, implemented entirely in CSS with `@keyframes` and no JavaScript.
 
 ### Booking Flow
 
@@ -75,31 +81,20 @@ A password-protected management interface at `/admin`.
 **Bookings tab:** Read-only table of all submissions. Columns: date submitted, name, email, service (shown as a colored badge), requested date, and notes.
 
 **Reviews tab:** Full moderation controls:
-- **Shown / Hidden toggle** — writes `TRUE` or `FALSE` to column E of the Reviews sheet instantly. The button's color reflects the current state.
-- **Delete** — uses the Sheets `batchUpdate` API with a `deleteDimension` request to physically remove the row. After any mutation, the tab re-fetches all rows from the server so row indices stay accurate (deleting row 3 makes what was row 4 become row 3).
+- **Shown / Hidden toggle** — writes `TRUE` or `FALSE` to column E of the Reviews sheet instantly
+- **Delete** — uses the Sheets `batchUpdate` API with a `deleteDimension` request to physically remove the row. After any mutation, the tab re-fetches all rows from the server so row indices stay accurate
 
 ### Email Confirmations (Resend)
 
-Two emails per booking: a customer-facing confirmation and an internal notification to the owner. Both are sent in `Promise.all` after a successful Sheets write. The `from` address uses Resend's shared sending domain (`onboarding@resend.dev`) by default; adding a verified custom domain in Resend settings enables branded sender addresses and allows sending to any customer email.
+Two emails per booking: a customer-facing confirmation and an internal notification to the owner. Both are sent in `Promise.all` after a successful Sheets write.
 
 ### Scroll Animations
 
 A `FadeIn` client component wraps any element that should animate into view. It uses `IntersectionObserver` with a bottom margin offset so elements animate just before they're fully visible. Supports `direction` (`up`, `left`, `right`) for directional slides and a `delay` prop (in milliseconds) for staggered card grids. The observer disconnects after the first trigger — animations fire once, not on every scroll.
 
-### Pet Gallery
-
-A 3-column grid (2-column on mobile) of 12 real pet photos from past clients. Each cell pairs two pets and crossfades between them on a 7-second interval, with the interval staggered across cells (via a `staggerMs` prop) so they don't all flip simultaneously. Built with `useEffect`, `setInterval`, and CSS `opacity` transitions.
-
 ### Responsive Design
 
-Fully optimized for mobile, tablet, and desktop. Key decisions:
-
-- **Heading scale:** `text-4xl` on mobile → `text-6xl` or `text-8xl` on desktop, using Tailwind's responsive prefix syntax
-- **Section padding:** `py-16` on mobile → `py-40` on desktop
-- **About photo:** `max-w-[200px]` on mobile so it doesn't dominate the screen
-- **Service cards:** 2-column compact grid on mobile with `line-clamp-1` on descriptions; full layout from `sm:` up
-- **Gallery:** 2-column on mobile, 3-column on `sm:` up
-- **Fixed nav:** a spacer div and `scroll-margin-top` on sections compensate for the navbar height at each breakpoint
+Fully optimized for mobile, tablet, and desktop. The hero photo stacks above the text on mobile and splits into a 55/45 left/right column on desktop. Service cards are a 3-column grid on desktop and compact 2- or 3-column grids on mobile. The fixed navbar uses a spacer `<div>` and `scroll-margin-top` on each section to compensate for nav height at each breakpoint.
 
 ---
 
@@ -109,9 +104,9 @@ Fully optimized for mobile, tablet, and desktop. Key decisions:
 paws-and-purrs/
 ├── app/
 │   ├── page.tsx                    # Root page — composes all sections, sets revalidate = 60
-│   ├── layout.tsx                  # HTML shell, Geist fonts, SEO metadata, viewport config
+│   ├── layout.tsx                  # HTML shell, Cormorant Garamond + Jost fonts, SEO metadata
 │   ├── globals.css                 # Tailwind import, brand color tokens (@theme inline),
-│   │                               # paw print SVG background patterns, scrollbar utilities,
+│   │                               # marquee keyframe animation, scrollbar utilities,
 │   │                               # scroll-margin-top for fixed nav anchor offsets
 │   │
 │   ├── components/
@@ -119,21 +114,15 @@ paws-and-purrs/
 │   │   ├── NavLinks.tsx            # Desktop horizontal link list with active-section highlighting
 │   │   ├── FadeIn.tsx              # IntersectionObserver scroll-in animation wrapper (client)
 │   │   │
-│   │   ├── Hero.tsx                # Full-viewport hero with headline, tagline, CTAs, photo
-│   │   ├── About.tsx               # Bio section with photo, pull quote, tags
-│   │   ├── Services.tsx            # Two service grids (pet + neighborhood)
-│   │   ├── ServiceCard.tsx         # Individual service card with icon, title, price badge
-│   │   ├── Booking.tsx             # Booking section shell (copy + form layout)
+│   │   ├── HeroAbout.tsx           # Full-viewport split hero: photo left, text/CTA/contact right
+│   │   ├── Services.tsx            # 3+6 image-card grid (pet services + neighborhood help)
+│   │   ├── Booking.tsx             # Booking section: scrolling photo marquee bg + form layout
 │   │   ├── BookingForm.tsx         # Controlled form — POSTs to /api/booking (client)
 │   │   ├── Reviews.tsx             # Async server component — fetches + renders approved reviews
 │   │   ├── ReviewCard.tsx          # Star rating + quote + name card
 │   │   ├── ReviewForm.tsx          # Review submission form (client)
 │   │   ├── StarRating.tsx          # Half-star interactive rating widget (client)
-│   │   ├── Gallery.tsx             # Auto-cycling crossfade pet photo grid (client)
-│   │   ├── Charities.tsx           # Charity section with donation links
-│   │   ├── CharityCard.tsx         # Individual charity card
-│   │   ├── FutureGoal.tsx          # Vision section with image + text
-│   │   ├── Memorial.tsx            # Memorial section
+│   │   ├── Memorial.tsx            # Memorial section for Cheddar and Leo
 │   │   └── Footer.tsx              # Three-column footer: brand, nav, contact
 │   │
 │   ├── admin/
@@ -152,7 +141,7 @@ paws-and-purrs/
 │           └── reviews/
 │               └── route.ts        # GET / PATCH (toggle) / DELETE (remove row)
 │
-├── public/images/                  # Pet photos, hero image, about photo, section images
+├── public/images/                  # Pet photos, hero image, service card images
 ├── .env.local                      # Secrets — never committed (see Environment Variables below)
 ├── CLAUDE.md                       # Instructions for AI coding assistants working on this repo
 └── package.json
@@ -160,7 +149,7 @@ paws-and-purrs/
 
 ### How the Pieces Connect
 
-**Server vs. Client Components.** Every file in `app/` is a Server Component by default — runs on the server, ships no JavaScript to the browser. Components that need interactivity declare `'use client'`: the booking form, the nav, the review form, the star widget, the gallery, and the admin dashboard. Static sections (Hero, About, Services, Charities, FutureGoal, Footer) have zero client-side JavaScript.
+**Server vs. Client Components.** Every file in `app/` is a Server Component by default — runs on the server, ships no JavaScript to the browser. Components that need interactivity declare `'use client'`: the booking form, the nav, the review form, the star widget, and the admin dashboard. Static sections (HeroAbout, Services, Booking, Memorial, Footer) have zero client-side JavaScript.
 
 **The reviews render path.** `Reviews.tsx` is an `async` Server Component. When the page renders, Next.js awaits it, which calls the Google Sheets API directly from server code. No HTTP round-trip. The result is plain HTML with the approved reviews baked in, delivered in the initial response. `export const revalidate = 60` in `page.tsx` tells Next.js to serve a cached version and regenerate in the background every 60 seconds.
 
@@ -174,7 +163,7 @@ paws-and-purrs/
 
 **Google Sheets as the database.** Unconventional but deliberate. The volume of bookings and reviews is small (tens per month, not thousands per day), the data is tabular, and the owner can view or edit it directly without any technical knowledge. The main tradeoffs are no relational queries, no transactions, and row-index management for deletions (row numbers shift after a delete, solved by re-fetching after each mutation). For this use case, those tradeoffs are worth the zero infrastructure cost.
 
-**`overflow-x: clip` instead of `overflow-x: hidden`.** Preventing horizontal scroll on mobile is necessary, but `overflow: hidden` on `html`/`body` creates a new block formatting context that silently breaks `position: fixed` and `position: sticky`. The `clip` value achieves the same visual clipping without that side effect. A subtle but important distinction — using `hidden` broke the fixed navbar and required correcting.
+**`overflow-x: clip` instead of `overflow-x: hidden`.** Preventing horizontal scroll on mobile is necessary, but `overflow: hidden` on `html`/`body` creates a new block formatting context that silently breaks `position: fixed` and `position: sticky`. The `clip` value achieves the same visual clipping without that side effect.
 
 **`fixed` instead of `sticky` for the navbar.** `sticky` is fragile — it stops working whenever an ancestor element has `overflow` set to anything other than `visible`. `fixed` is unconditional and viewport-relative. The cost is a matching spacer `<div>` in the page and `scroll-margin-top` on each section so anchor links don't land with headings hidden behind the nav bar.
 
@@ -184,7 +173,7 @@ paws-and-purrs/
 
 **No authentication library for the admin.** The admin uses a raw password check rather than NextAuth or a similar library. For a single-user, personal dashboard with no user accounts, the added complexity of sessions, OAuth flows, and token management would be significant overhead with no meaningful benefit. The password is validated server-side on every API request, which is stateless and correct for this use case.
 
-**Component size limit (150 lines).** All components are kept under 150 lines. When a component would exceed this, it is split — the admin page spawned separate `BookingsTab` and `ReviewsTab` components, and the star rating widget was extracted from `ReviewForm` into its own `StarRating` file. This keeps files scannable and focused.
+**CSS-only marquee animation.** The booking section background uses a `@keyframes marquee` animation on a flex row of duplicated images — no JavaScript, no library. Two rows scroll in opposite directions at slightly different speeds (45s and 40s) for visual depth. The seamless loop works because the image set is duplicated: `translateX(-50%)` moves exactly one copy's width, at which point the animation resets to `translateX(0)` with an identical visual state.
 
 ---
 

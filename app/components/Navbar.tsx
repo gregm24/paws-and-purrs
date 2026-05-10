@@ -5,13 +5,9 @@ import NavLinks from "./NavLinks";
 
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Booking", href: "#booking" },
   { label: "Reviews", href: "#reviews" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Charities", href: "#charities" },
-  { label: "Future Goal", href: "#future-goal" },
 ];
 
 export default function Navbar() {
@@ -61,7 +57,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-14 sm:h-20">
           <a
             href="#home"
-            className="text-xl sm:text-2xl font-bold text-orange tracking-tight hover:text-orange-light transition-colors"
+            className="font-serif text-xl sm:text-2xl text-orange tracking-tight hover:text-orange-light transition-colors"
           >
             Paws &amp; Purrs
           </a>

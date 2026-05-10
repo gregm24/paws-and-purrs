@@ -57,14 +57,13 @@ export default async function Reviews() {
   const reviews = await getApprovedReviews();
 
   return (
-    <section id="reviews" className="bg-orange-pale paw-bg py-16 sm:py-20 lg:py-40">
+    <section id="reviews" className="bg-orange-pale py-10 sm:py-12 lg:py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeIn className="mb-8 sm:mb-14">
-          <div className="inline-flex items-center gap-2 bg-white text-orange text-sm font-medium px-4 py-2 rounded-full mb-5">
-            <span>⭐</span>
-            <span>Reviews</span>
-          </div>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-navy">What Neighbors Say</h2>
+          <p className="text-[10px] sm:text-xs font-semibold tracking-[0.25em] uppercase text-orange mb-4">
+            Reviews
+          </p>
+          <h2 className="font-serif text-5xl sm:text-6xl lg:text-7xl text-navy leading-tight">What Neighbors Say</h2>
         </FadeIn>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-14 items-start">

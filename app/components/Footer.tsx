@@ -1,12 +1,8 @@
 const NAV_LINKS = [
   { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Booking", href: "#booking" },
   { label: "Reviews", href: "#reviews" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Charities", href: "#charities" },
-  { label: "Future Goal", href: "#future-goal" },
 ];
 
 export default function Footer() {
@@ -16,7 +12,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12">
           {/* Brand */}
           <div className="flex flex-col gap-4">
-            <span className="text-2xl font-bold text-orange tracking-tight">
+            <span className="font-serif text-2xl text-orange tracking-tight">
               Paws &amp; Purrs
             </span>
             <p className="text-base text-white/50 leading-relaxed max-w-xs">
