@@ -13,6 +13,9 @@ const STRIP_IMAGES = [
   "/images/Slurpee.jpeg",
   "/images/Brooklyn.jpeg",
   "/images/lukeleia.jpeg",
+  "/images/home.jpeg",
+  "/images/cheddar.jpeg",
+  "/images/leo.jpeg",
 ];
 
 export default function Booking() {
