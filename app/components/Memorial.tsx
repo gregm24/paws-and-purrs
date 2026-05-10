@@ -9,7 +9,7 @@ export default function Memorial() {
           <p className="text-orange text-sm font-medium tracking-widest uppercase mb-4">
             Always Remembered
           </p>
-          <h2 className="text-4xl sm:text-5xl font-bold text-navy leading-tight">
+          <h2 className="font-serif text-4xl sm:text-5xl text-navy leading-tight">
             In Loving Memory of Cheddar and Leo
           </h2>
         </FadeIn>
